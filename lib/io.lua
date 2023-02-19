@@ -1,6 +1,8 @@
 local expect = require("expect").expect
 local event = require("event")
 local term = require("term")
+local keys = require("keys")
+local machine = require("machine")
 
 local io = {}
 
@@ -26,7 +28,7 @@ function io.write(text)
         local chunk = text:sub(1, nl)
         text = text:sub(#chunk + 1)
 
-        local has_nl = chunk:sub(-1) == "\n"
+        local has_nl = chunk:sub( -1) == "\n"
         if has_nl then chunk = chunk:sub(1, -2) end
 
         local cx, cy = term.getPos()
@@ -130,7 +132,7 @@ function io.read(replace, history, complete, default)
     while true do
         full_redraw()
         -- get input
-        local evt, par1, par2 = event.pull()
+        local evt, par1, par2, mods = event.pull()
 
         if evt == "char" then
             dirty = true
@@ -140,32 +142,18 @@ function io.read(replace, history, complete, default)
             elseif cursor_pos == #buffer then
                 buffer = par1 .. buffer
             else
-                buffer = buffer:sub(0, -cursor_pos - 1) .. par1 .. buffer:sub(-cursor_pos)
+                buffer = buffer:sub(0, -cursor_pos - 1) .. par1 .. buffer:sub( -cursor_pos)
             end
-
-        elseif evt == "paste" then
-            dirty = true
-            clearCompletion()
-            if cursor_pos == 0 then
-                buffer = buffer .. par1
-            elseif cursor_pos == #buffer then
-                buffer = par1 .. buffer
-            else
-                buffer = buffer:sub(0, -cursor_pos - 1) .. par1 ..
-                    buffer:sub(-cursor_pos + (#par1 - 1))
-            end
-
         elseif evt == "key_down" then
-            if par2 == "back" and #buffer > 0 then
+            if par1 == keys.back and #buffer > 0 then
                 dirty = true
                 if cursor_pos == 0 then
                     buffer = buffer:sub(1, -2)
                     clearCompletion()
                 elseif cursor_pos < #buffer then
-                    buffer = buffer:sub(0, -cursor_pos - 2) .. buffer:sub(-cursor_pos)
+                    buffer = buffer:sub(0, -cursor_pos - 2) .. buffer:sub( -cursor_pos)
                 end
-
-            elseif par2 == "delete" and cursor_pos > 0 then
+            elseif par1 == keys.delete and cursor_pos > 0 then
                 dirty = true
 
                 if cursor_pos == #buffer then
@@ -173,11 +161,10 @@ function io.read(replace, history, complete, default)
                 elseif cursor_pos == 1 then
                     buffer = buffer:sub(1, -2)
                 else
-                    buffer = buffer:sub(0, -cursor_pos - 1) .. buffer:sub(-cursor_pos + 1)
+                    buffer = buffer:sub(0, -cursor_pos - 1) .. buffer:sub( -cursor_pos + 1)
                 end
                 cursor_pos = cursor_pos - 1
-
-            elseif par2 == "up" then
+            elseif par1 == keys.up then
                 if #completions > 1 then
                     dirty = true
                     clearCompletion()
@@ -186,7 +173,6 @@ function io.read(replace, history, complete, default)
                     else
                         comp_id = #completions
                     end
-
                 elseif hist_pos > 1 then
                     cursor_pos = 0
 
@@ -199,8 +185,7 @@ function io.read(replace, history, complete, default)
                     buffer = history[hist_pos]
                     dirty = true
                 end
-
-            elseif par2 == "down" then
+            elseif par1 == keys.down then
                 if #completions > 1 then
                     dirty = true
                     clearCompletion()
@@ -209,7 +194,6 @@ function io.read(replace, history, complete, default)
                     else
                         comp_id = 1
                     end
-
                 elseif hist_pos < #history then
                     cursor_pos = 0
 
@@ -222,38 +206,47 @@ function io.read(replace, history, complete, default)
                     buffer = history[hist_pos]
                     dirty = true
                 end
-
-            elseif par2 == "left" then
+            elseif par1 == keys.left then
                 if cursor_pos < #buffer then
                     clearCompletion()
                     cursor_pos = cursor_pos + 1
                 end
-
-            elseif par2 == "right" then
+            elseif par1 == keys.right then
                 if cursor_pos > 0 then
                     cursor_pos = cursor_pos - 1
-
                 elseif comp_id > 0 then
                     dirty = true
                     buffer = buffer .. completions[comp_id]
                 end
-
-            elseif par2 == "tab" then
+            elseif par1 == keys.tab then
                 if comp_id > 0 then
                     dirty = true
                     buffer = buffer .. completions[comp_id]
                 end
-
-            elseif par2 == "home" then
+            elseif par1 == keys.home then
                 cursor_pos = #buffer
-
-            elseif par2 == "end" then
+            elseif par1 == keys["end"] then
                 cursor_pos = 0
-
-            elseif par2 == "enter" then
+            elseif par1 == keys.enter then
                 clearCompletion()
                 print()
                 break
+            elseif mods & keys.mods.ctrl ~= 0 then
+                if par1 == keys.v then
+                    dirty = true
+                    clearCompletion()
+                    local text = machine.getClipboard()
+                    if text then
+                        if cursor_pos == 0 then
+                            buffer = buffer .. text
+                        elseif cursor_pos == #buffer then
+                            buffer = text .. buffer
+                        else
+                            buffer = buffer:sub(0, -cursor_pos - 1) .. text ..
+                                buffer:sub( -cursor_pos + (#text - 1))
+                        end
+                    end
+                end
             end
         end
     end
