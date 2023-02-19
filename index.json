@@ -1,0 +1,126 @@
+[
+{
+  "path": "./init.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./init.lua"
+},
+{
+  "path": "./bin/shutdown.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/shutdown.lua"
+},
+{
+  "path": "./bin/mkdir.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/mkdir.lua"
+},
+{
+  "path": "./bin/exit.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/exit.lua"
+},
+{
+  "path": "./bin/pwd.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/pwd.lua"
+},
+{
+  "path": "./bin/wget.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/wget.lua"
+},
+{
+  "path": "./bin/hello.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/hello.lua"
+},
+{
+  "path": "./bin/lua.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/lua.lua"
+},
+{
+  "path": "./bin/fun/melt.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/fun/melt.lua"
+},
+{
+  "path": "./bin/fun/mandelbrot.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/fun/mandelbrot.lua"
+},
+{
+  "path": "./bin/shell.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/shell.lua"
+},
+{
+  "path": "./bin/rm.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/rm.lua"
+},
+{
+  "path": "./bin/ls.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/ls.lua"
+},
+{
+  "path": "./bin/version.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/version.lua"
+},
+{
+  "path": "./bin/reboot.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/reboot.lua"
+},
+{
+  "path": "./bin/cd.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/cd.lua"
+},
+{
+  "path": "./bin/clear.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./bin/clear.lua"
+},
+{
+  "path": "./boot/autorun/02_timer.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/autorun/02_timer.lua"
+},
+{
+  "path": "./boot/autorun/01_stdio.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/autorun/01_stdio.lua"
+},
+{
+  "path": "./boot/autorun/02_http.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/autorun/02_http.lua"
+},
+{
+  "path": "./boot/autorun/99_shell.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/autorun/99_shell.lua"
+},
+{
+  "path": "./boot/autorun/00_package.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/autorun/00_package.lua"
+},
+{
+  "path": "./boot/vendor.bmp",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./boot/vendor.bmp"
+},
+{
+  "path": "./LICENSE",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./LICENSE"
+},
+{
+  "path": "./lib/utfstring.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/utfstring.lua"
+},
+{
+  "path": "./lib/json.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/json.lua"
+},
+{
+  "path": "./lib/expect.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/expect.lua"
+},
+{
+  "path": "./lib/parallel.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/parallel.lua"
+},
+{
+  "path": "./lib/io.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/io.lua"
+},
+{
+  "path": "./lib/keys.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/keys.lua"
+},
+{
+  "path": "./lib/colors.lua",
+  "raw_url": "https://raw.githubusercontent.com/Ale32bit/CapyOS/1cd910dcae51ea267f09f99e348740382569a54f/./lib/colors.lua"
+}
+]
