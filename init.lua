@@ -25,9 +25,6 @@ function os.version()
     return "CapyOS " .. version
 end
 
-term.setSize(51, 19)
-gpu.setScale(2)
-
 term.setPos(1, 1)
 term.write(_HOST)
 
