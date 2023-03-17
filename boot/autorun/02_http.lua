@@ -13,17 +13,8 @@ function http.request(url, body, headers, options)
         return nil, "Invalid URL"
     end
 
-    local requestId = http.requestAsync(url, body, headers, options)
-    local ev, id, data, info
-    repeat
-        ev, id, data, info = event.pull("http_response", "http_failure")
-    until id == requestId
-
-    if ev == "http_failure" then
-        return nil, data
-    end
-
-    return data, info
+    local task<close> = http.requestAsync(url, body, headers, options)
+    return task:await()
 end
 
 function http.get(url, headers, options)
@@ -45,6 +36,9 @@ end
 
 local WebSocketHandle
 local function buildWebsocketHandle(handle)
+    if not handle then
+        return nil
+    end
     if not WebSocketHandle then
         WebSocketHandle = getmetatable(handle) or { __index = {} }
         function WebSocketHandle.__index:close()
@@ -76,15 +70,8 @@ function http.websocket(url, headers)
         return nil, "Invalid URL"
     end
 
-    local requestId = http.websocketAsync(url, headers)
-    local ev, id, par
-    repeat
-        ev, id, par = event.pull("websocket_connect", "websocket_failure")
-    until id == requestId
+    local task<close> = http.websocketAsync(url, headers)
+    local client, err = task:await()
 
-    if ev == "http_failure" then
-        return nil, par
-    end
-
-    return buildWebsocketHandle(par)
+    return buildWebsocketHandle(client), err
 end

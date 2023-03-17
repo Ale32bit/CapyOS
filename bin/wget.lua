@@ -19,7 +19,7 @@ if not http.checkURL(args[1]) then
     error("Invalid URL", 0)
 end
 
-local response <close>, err = http.get(args[1], nil, {
+local response, err = http.get(args[1], nil, {
     binary = true,
 })
 if not response then
